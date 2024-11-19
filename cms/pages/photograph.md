@@ -6,9 +6,9 @@ slug: photograph
 tags: pages
 seo:
   noindex: false
-  title: photograph CMC
-  og:title: photograph CMC
-  twitter:title: photograph CMC
+  title: Photograph
+  og:title: Photograph 
+  twitter:title: Photograph 
 ---
 
 
