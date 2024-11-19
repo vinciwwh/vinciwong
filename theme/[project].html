@@ -58,10 +58,12 @@
       <p id="w-node-c9704538-ffa5-3f8f-c013-56efce8c7fb8-ef8874bc" class="paragraph-5">{{ f_paragraph }}</p>
       <section class="section-23"></section>
       <section id="w-node-_4bc34407-0996-ce06-fd6b-ed032abf8ade-ef8874bc" class="section-25">
-        <div class="div-block-17">
-          <p class="video">{{ f_paragraph1 }}</p>
-          <a href="{{ f_link }}" target="_blank" class="button w-button w-dyn-bind-empty">{{ f_click }}</a>
-        </div>
+       <div class="div-block-17">
+    <p class="video">{{ f_paragraph1 }}</p>
+    {% if f_link %}
+        <a href="{{ f_link }}" target="_blank" class="button w-button">{{ f_click }}</a>
+    {% endif %}
+</div>
       </section>
     </section>
     <section id="w-node-_5a6ca041-e981-424e-2b73-03ca5376a88d-ef8874bc" class="section-30">
