@@ -22,7 +22,7 @@ f_multi-images:
   - url: /assets/external/672cee9db35f362e99e7bcb6_frdvtipoyion.jpg
     alt: null
 f_scope-of-works: Site respond
-f_link: NA
+f_link:
 f_paragraph: >-
   The proposed architecture thesis explores a novel approach to mitigate
   flooding in coastal areas by integrating landscape elements. The aim is to
