@@ -6,7 +6,7 @@ slug: ''
 tags: pages
 seo:
   noindex: false
-  title: Wing Hei Vinci's Fabulous Site
+  title: Vinci Wong
 ---
 
 
