@@ -6,9 +6,9 @@ slug: contact
 tags: pages
 seo:
   noindex: false
-  title: Project details
-  og:title: Project details
-  twitter:title: Project details
+  title: Contact
+  og:title: Contact
+  twitter:title: Contact
 ---
 
 
