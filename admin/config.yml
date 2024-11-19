@@ -1,0 +1,1048 @@
+backend:
+  name: git-gateway
+  accept_roles:
+    - admin
+    - editor
+  branch: master
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    folder: cms/pages
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - &ref_0
+        label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Twitter Image
+            name: twitter:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - name: photography
+    label: Photographies
+    folder: cms/photography
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: paragraph
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_year
+        label: year
+        widget: string
+        required: false
+      - hint: ''
+        name: f_main-image
+        label: Main Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_multiple-images
+        label: Multiple images
+        widget: list
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_sorting-order
+        label: Sorting Order
+        widget: string
+        required: false
+      - hint: ''
+        name: f_type
+        label: Type
+        widget: string
+        required: false
+      - hint: ''
+        name: f_white
+        label: White
+        widget: color
+        required: false
+        enableAlpha: true
+        allowInput: true
+      - hint: ''
+        name: f_types
+        label: types
+        widget: select
+        required: false
+        options:
+          - label: Film
+            value: Film
+          - label: Digital
+            value: Digital
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: photography
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[photography].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: nav_bar
+    label: Nav Bars
+    folder: cms/nav-bar
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: nav-bar
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[nav-bar].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: project
+    label: Projects
+    folder: cms/project
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_photo
+        label: Photo
+        widget: object
+        required: true
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: true
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_hex-code
+        label: Hex Code
+        widget: string
+        required: true
+      - hint: ''
+        name: f_link
+        label: Link
+        widget: string
+        required: true
+      - hint: ''
+        name: f_group
+        label: 'Group:'
+        widget: select
+        required: false
+        options:
+          - label: 'Group:'
+            value: 'Group:'
+      - hint: ''
+        name: f_paragraph
+        label: Introduction
+        widget: string
+        required: false
+      - hint: ''
+        name: f_multi-images
+        label: multi-images
+        widget: list
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_year
+        label: year
+        widget: string
+        required: false
+      - hint: ''
+        name: f_click
+        label: Click
+        widget: string
+        required: false
+      - hint: ''
+        name: f_types
+        label: Types
+        widget: select
+        required: false
+        options:
+          - label: "Conceptual\_"
+            value: "Conceptual\_"
+          - label: Built
+            value: Built
+          - label: "Sustainable\_"
+            value: "Sustainable\_"
+          - label: Emotional
+            value: Emotional
+          - label: AI
+            value: AI
+          - label: Artificial intelligence
+            value: Artificial intelligence
+      - hint: ''
+        name: f_site
+        label: Site
+        widget: string
+        required: false
+      - hint: ''
+        name: f_scope-of-works
+        label: Scope of Works
+        widget: string
+        required: false
+      - hint: ''
+        name: f_paragraph1
+        label: paragraph1
+        widget: string
+        required: false
+      - hint: ''
+        name: f_image-01
+        label: image 01
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_image-02
+        label: image 02
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_subtitle
+        label: Subtitle
+        widget: string
+        required: false
+      - hint: ''
+        name: f_video
+        label: Video
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Url
+            widget: string
+            required: false
+      - hint: ''
+        name: f_click-link
+        label: click link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_order
+        label: Order
+        widget: number
+        required: false
+      - hint: ''
+        name: f_masterprize
+        label: Masterprize
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: project
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[project].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: 'Original text: Projects, key: -37ac8366'
+            label: Text
+            name: '-37ac8366'
+            widget: string
+          - hint: 'Original text: Photography, key: -38f29e83'
+            label: Text
+            name: '-38f29e83'
+            widget: string
+          - hint: 'Original text: About me, key: 645eff2b'
+            label: Text
+            name: 645eff2b
+            widget: string
+          - hint: 'Original text: Contact, key: -64104400'
+            label: Text
+            name: '-64104400'
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: 'Original text: 01, key: 601'
+            label: Text
+            name: '601'
+            widget: string
+          - hint: 'Original text:  — , key: 45aac'
+            label: Text
+            name: 45aac
+            widget: string
+          - hint: 'Original text: 00, key: 600'
+            label: Text
+            name: '600'
+            widget: string
+          - hint: 'Original text: About Me, key: 645efb4b'
+            label: Text
+            name: 645efb4b
+            widget: string
+          - hint: 'Original text: Prev, key: 261653'
+            label: Text
+            name: '261653'
+            widget: string
+          - hint: 'Original text: Heading, key: -6d5fea1e'
+            label: Text
+            name: '-6d5fea1e'
+            widget: string
+          - hint: 'Original text: Next, key: 24ff13'
+            label: Text
+            name: 24ff13
+            widget: string
+          - hint: 'Original text: CONTACT, key: 6382b000'
+            label: Text
+            name: 6382b000
+            widget: string
+          - hint: 'Original text: T: +852 63390980, key: 3a07a980'
+            label: Text
+            name: 3a07a980
+            widget: string
+          - hint: 'Original text: E: vinciwwh@gmail.com, key: 3f358ec3'
+            label: Text
+            name: 3f358ec3
+            widget: string
+          - hint: 'Original text: Instagram, key: 792b2792'
+            label: Text
+            name: 792b2792
+            widget: string
+          - hint: 'Original text: LinkedIn, key: 4b0ff13e'
+            label: Text
+            name: 4b0ff13e
+            widget: string
+          - hint: 'Original text: Protected Page, key: -11d4bbff'
+            label: Text
+            name: '-11d4bbff'
+            widget: string
+          - hint: 'Original text: Password, key: 4c641ebb'
+            label: Text
+            name: 4c641ebb
+            widget: string
+          - hint: >-
+              Original text: Incorrect password. Please try again., key:
+              -f5c4b5f
+            label: Text
+            name: '-f5c4b5f'
+            widget: string
+          - hint: 'Original text: Page Not Found, key: -40b0787c'
+            label: Text
+            name: '-40b0787c'
+            widget: string
+          - hint: >-
+              Original text: The page you are looking for doesn't exist or has
+              been moved, key: 556d64d8
+            label: Text
+            name: 556d64d8
+            widget: string
+          - hint: 'Original text: Account activated, key: -3d3c5c82'
+            label: Text
+            name: '-3d3c5c82'
+            widget: string
+          - hint: >-
+              Original text: Your account was created successfully. You will be
+              redirected shortly., key: -7498bb4e
+            label: Text
+            name: '-7498bb4e'
+            widget: string
+          - hint: 'Original text: If nothing happens, click here., key: -7bf1dbc9'
+            label: Text
+            name: '-7bf1dbc9'
+            widget: string
+          - hint: 'Original text: Sign up, key: -204ff442'
+            label: Text
+            name: '-204ff442'
+            widget: string
+          - hint: 'Original text: Email, key: 3ff5b7c'
+            label: Text
+            name: 3ff5b7c
+            widget: string
+          - hint: 'Original text: Name, key: 24eeab'
+            label: Text
+            name: 24eeab
+            widget: string
+          - hint: >-
+              Original text: By creating an account, I agree to this website's ,
+              key: 4867e34d
+            label: Text
+            name: 4867e34d
+            widget: string
+          - hint: 'Original text: privacy policy, key: 329660ca'
+            label: Text
+            name: 329660ca
+            widget: string
+          - hint: 'Original text:  and , key: 1f0b149'
+            label: Text
+            name: 1f0b149
+            widget: string
+          - hint: 'Original text: terms of service, key: 4f204da5'
+            label: Text
+            name: 4f204da5
+            widget: string
+          - hint: >-
+              Original text: I consent to receive marketing emails., key:
+              -3db302e8
+            label: Text
+            name: '-3db302e8'
+            widget: string
+          - hint: 'Original text: Already have an account?, key: -76cf8d8b'
+            label: Text
+            name: '-76cf8d8b'
+            widget: string
+          - hint: 'Original text: Log In, key: -78042c3f'
+            label: Text
+            name: '-78042c3f'
+            widget: string
+          - hint: >-
+              Original text: There was an error signing you up. Please try
+              again, or contact us if you continue to have problems., key:
+              -191558ad
+            label: Text
+            name: '-191558ad'
+            widget: text
+          - hint: 'Original text: Verification Required, key: 8449804'
+            label: Text
+            name: '8449804'
+            widget: string
+          - hint: >-
+              Original text: Account verification required. Please check your
+              email to find your unique verification link., key: 66134559
+            label: Text
+            name: '66134559'
+            widget: text
+          - hint: 'Original text: Password Reset Email Sent, key: 6bfe9c32'
+            label: Text
+            name: 6bfe9c32
+            widget: string
+          - hint: >-
+              Original text: If we found an account associated with that email
+              address, we've sent a link to reset your password., key: -13a89bf
+            label: Text
+            name: '-13a89bf'
+            widget: text
+          - hint: 'Original text: Reset Password, key: 2bfd368c'
+            label: Text
+            name: 2bfd368c
+            widget: string
+          - hint: >-
+              Original text: There was an error resetting your password. Please
+              try again, or contact us if you continue to have problems., key:
+              -7c28e64b
+            label: Text
+            name: '-7c28e64b'
+            widget: text
+          - hint: 'Original text: Password updated, key: -16704faa'
+            label: Text
+            name: '-16704faa'
+            widget: string
+          - hint: >-
+              Original text: Your password was updated successfully. You were
+              automatically logged in and can continue your session., key:
+              5284c470
+            label: Text
+            name: 5284c470
+            widget: text
+          - hint: 'Original text: Go to Homepage, key: -27857705'
+            label: Text
+            name: '-27857705'
+            widget: string
+          - hint: 'Original text: Update Password, key: 69ed5012'
+            label: Text
+            name: 69ed5012
+            widget: string
+          - hint: >-
+              Original text: Please enter your new password in the field below.
+              Make sure you are not using your current password., key: -2d35ed29
+            label: Text
+            name: '-2d35ed29'
+            widget: text
+          - hint: 'Original text: New Password, key: 79707d5b'
+            label: Text
+            name: 79707d5b
+            widget: string
+          - hint: >-
+              Original text: There was an error updating your password. Please
+              try again, or contact us if you continue to have problems., key:
+              -2da7dae4
+            label: Text
+            name: '-2da7dae4'
+            widget: text
+          - hint: 'Original text: Access Denied, key: -2624ce29'
+            label: Text
+            name: '-2624ce29'
+            widget: string
+          - hint: >-
+              Original text: A site membership is required to view this page.
+              Please , key: 4617a544
+            label: Text
+            name: 4617a544
+            widget: string
+          - hint: 'Original text:  or , key: 103a7d'
+            label: Text
+            name: 103a7d
+            widget: string
+          - hint: 'Original text: Log in, key: -7804285f'
+            label: Text
+            name: '-7804285f'
+            widget: string
+          - hint: 'Original text: ., key: 2e'
+            label: Text
+            name: 2e
+            widget: string
+          - hint: 'Original text: My Account, key: -585ec447'
+            label: Text
+            name: '-585ec447'
+            widget: string
+          - hint: 'Original text: Password settings, key: 4f13dfe8'
+            label: Text
+            name: 4f13dfe8
+            widget: string
+          - hint: 'Original text: Reset password, key: 2822d26c'
+            label: Text
+            name: 2822d26c
+            widget: string
+          - hint: >-
+              Original text: Your account was updated successfully., key:
+              6d17ba0b
+            label: Text
+            name: 6d17ba0b
+            widget: string
+          - hint: >-
+              Original text: There was an error updating your account. Please
+              try again, or contact us if you continue to have problems., key:
+              13527f80
+            label: Text
+            name: 13527f80
+            widget: text
+          - hint: 'Original text: Spatial Designer, key: -7a655939'
+            label: Text
+            name: '-7a655939'
+            widget: string
+          - hint: 'Original text: I do design. , key: -2bb26972'
+            label: Text
+            name: '-2bb26972'
+            widget: string
+          - hint: 'Original text: 2020-2024, key: 1907df31'
+            label: Text
+            name: 1907df31
+            widget: string
+          - hint: >-
+              Original text: The Hong Kong Polytechnic University, Hong Kong,
+              key: 5839b90f
+            label: Text
+            name: 5839b90f
+            widget: string
+          - hint: >-
+              Original text: BA (Hons) Environment & Interior Design, key:
+              -4d0f9d03
+            label: Text
+            name: '-4d0f9d03'
+            widget: string
+          - hint: 'Original text: 2023, key: 1774ff'
+            label: Text
+            name: 1774ff
+            widget: string
+          - hint: 'Original text: Parson School of Design, New York, key: 1ccfe10d'
+            label: Text
+            name: 1ccfe10d
+            widget: string
+          - hint: "Original text: BFA\_Architectural Design (exchange), key: 52bf261a"
+            label: Text
+            name: 52bf261a
+            widget: string
+          - hint: 'Original text: AWARDS, key: 73d3c5b6'
+            label: Text
+            name: 73d3c5b6
+            widget: string
+          - hint: 'Original text: 0, key: 30'
+            label: Text
+            name: '30'
+            widget: string
+          - hint: 'Original text: WINNER, key: -67610bc1'
+            label: Text
+            name: '-67610bc1'
+            widget: string
+          - hint: 'Original text: winner, key: -2ef3ffc1'
+            label: Text
+            name: '-2ef3ffc1'
+            widget: string
+          - hint: 'Original text: Architecture Masterprize 2023 , key: -5d5213bc'
+            label: Text
+            name: '-5d5213bc'
+            widget: string
+          - hint: 'Original text: conceptual architecture, key: 23499c7b'
+            label: Text
+            name: 23499c7b
+            widget: string
+          - hint: 'Original text: finalist, key: -289b24ac'
+            label: Text
+            name: '-289b24ac'
+            widget: string
+          - hint: 'Original text: Finalist, key: -24c0c08c'
+            label: Text
+            name: '-24c0c08c'
+            widget: string
+          - hint: 'Original text: FINALIST, key: 60acb54'
+            label: Text
+            name: 60acb54
+            widget: string
+          - hint: 'Original text: Asia Young Designer Award 2023, key: 3a6f1359'
+            label: Text
+            name: 3a6f1359
+            widget: string
+          - hint: 'Original text: 1, key: 31'
+            label: Text
+            name: '31'
+            widget: string
+          - hint: 'Original text: WINNEr, key: -67610ba1'
+            label: Text
+            name: '-67610ba1'
+            widget: string
+          - hint: 'Original text: Architecture Masterprize 2024, key: 4f91ff5d'
+            label: Text
+            name: 4f91ff5d
+            widget: string
+          - hint: 'Original text: small architecture/Installation, key: 583ea7bd'
+            label: Text
+            name: 583ea7bd
+            widget: string
+          - hint: 'Original text: Info, key: 22d8ce'
+            label: Text
+            name: 22d8ce
+            widget: string
+          - hint: >-
+              Original text: I am a Spatial Designer, born in Hong Kong. My work
+              revolves around the exploration of form and emotions., key:
+              -4e17cf18
+            label: Text
+            name: '-4e17cf18'
+            widget: text
+          - hint: 'Original text: Avaliable for Hire., key: -46dd205a'
+            label: Text
+            name: '-46dd205a'
+            widget: string
+          - hint: 'Original text: Linkedin, key: 4b0ff51e'
+            label: Text
+            name: 4b0ff51e
+            widget: string
+          - hint: 'Original text: vinciwwh@gmail.com, key: -55fb66a8'
+            label: Text
+            name: '-55fb66a8'
+            widget: string
+          - hint: 'Original text: Back, key: 1f7907'
+            label: Text
+            name: 1f7907
+            widget: string
+          - hint: 'Original text: Selected Works, key: -2571a243'
+            label: Text
+            name: '-2571a243'
+            widget: string
+          - hint: 'Original text: click to view ->, key: -1561ae01'
+            label: Text
+            name: '-1561ae01'
+            widget: string
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: 'Original link: /photograph/, key: -32beea3c'
+            label: Link
+            name: '-32beea3c'
+            widget: string
+          - hint: 'Original link: /about-me/, key: -766f8bf8'
+            label: Link
+            name: '-766f8bf8'
+            widget: string
+          - hint: 'Original link: /contact/, key: 16bdc13e'
+            label: Link
+            name: 16bdc13e
+            widget: string
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+          - hint: >-
+              Original link:
+              #https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox, key:
+              2146345c
+            label: Link
+            name: 2146345c
+            widget: string
+          - hint: >-
+              Original link: https://www.instagram.com/vinci.arch/, key:
+              -71b613a4
+            label: Link
+            name: '-71b613a4'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.linkedin.com/in/wing-hei-vinci-wong-361975332/, key:
+              -1570081b
+            label: Link
+            name: '-1570081b'
+            widget: string
+          - hint: 'Original link: /log-in/, key: 26a3aa92'
+            label: Link
+            name: 26a3aa92
+            widget: string
+          - hint: 'Original link: /sign-up/, key: 4b0d5213'
+            label: Link
+            name: 4b0d5213
+            widget: string
+          - hint: 'Original link: /reset-password/, key: -16d8c219'
+            label: Link
+            name: '-16d8c219'
+            widget: string
+          - hint: >-
+              Original link:
+              https://architectureprize.com/winners/winner.php?id=7155, key:
+              61b39ecd
+            label: Link
+            name: 61b39ecd
+            widget: string
+          - hint: >-
+              Original link:
+              https://architectureprize.com/winners/winner.php?id=7955, key:
+              61b3bcd5
+            label: Link
+            name: 61b3bcd5
+            widget: string
+          - hint: >-
+              Original link: https://www.linkedin.com/in/vinci-wong-ab4514238/,
+              key: 2962587b
+            label: Link
+            name: 2962587b
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: i649ebb35
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i34532fb5
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+local_backend: true
+publish_mode: editorial_workflow
