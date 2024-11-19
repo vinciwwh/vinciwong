@@ -7,7 +7,7 @@ slug: the-blob
 updated-on: '2024-11-18T04:35:09.588Z'
 created-on: '2022-11-29T04:30:36.071Z'
 published-on: '2024-11-18T04:35:14.189Z'
-f_link: NA
+f_link: 
 f_hex-code: '#22231b'
 f_types: "Conceptual\_"
 f_year: '2022 '
