@@ -62,6 +62,8 @@
     <p class="video">{{ f_paragraph1 }}</p>
     {% if f_link %}
         <a href="{{ f_link }}" target="_blank" class="button w-button">{{ f_click }}</a>
+    {% else %}
+        <a href="#" class="button w-button w-dyn-bind-empty">{{ f_click }}</a>
     {% endif %}
 </div>
       </section>
