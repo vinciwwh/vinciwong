@@ -127,7 +127,7 @@
       </div>
       <div class="div-block-14">
         <div class="c-link_bottom">
-          <h3 r-prevnext-prev-text="1" class="c-text-2">{{ item.data.title }}</h3>
+          <h3 r-prevnext-prev-text="1" class="c-text-2">Previous Project</h3>
         </div>
       </div>
     </div>
@@ -152,7 +152,7 @@
         </div>
       </a>
       <div class="c-link_bottom">
-        <h3 r-prevnext-next-text="1" class="c-text-2">{{ item.data.title }}</h3>
+        <h3 r-prevnext-next-text="1" class="c-text-2">Next Project</h3>
       </div>
     </div>
   </div>
@@ -163,52 +163,52 @@
 <script src="https://tools.refokus.com/next-prev-articles/bundle.v1.0.0.js"></script>
     
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      console.log("Script loaded successfully!");
+   document.addEventListener('DOMContentLoaded', () => {
+  console.log("Script loaded successfully!");
 
-      // Define project data with slugs
-      const projects = [
-        { title: "Reminsicene", order: 1, slug: "reminsicene" },
-        { title: "Library of Surveillance", order: 2, slug: "library-of-surveillance" },
-        { title: "The Blob", order: 3, slug: "the-blob" },
-        { title: "Transition", order: 4, slug: "transition" },
-        { title: "Floating Community", order: 5, slug: "floating-community" },
-        { title: "Tai-O Pavillion", order: 6, slug: "tai-o-pavillion" },
-        { title: "Mirror Dimension", order: 7, slug: "mirror-dimension" },
-      ];
+  // Define project data with slugs and titles
+  const projects = [
+    { title: "Reminsicene", slug: "reminsicene" },
+    { title: "Library of Surveillance", slug: "library-of-surveillance" },
+    { title: "The Blob", slug: "the-blob" },
+    { title: "Transition", slug: "transition" },
+    { title: "Floating Community", slug: "floating-community" },
+    { title: "Tai-O Pavillion", slug: "tai-o-pavillion" },
+    { title: "Mirror Dimension", slug: "mirror-dimension" },
+  ];
 
-      // Extract current slug from the URL
-      const currentSlug = window.location.pathname.split("/").filter(Boolean).pop();
-      console.log("Current slug:", currentSlug);
+  // Extract current slug from the URL
+  const currentSlug = window.location.pathname.split("/").filter(Boolean).pop();
+  console.log("Current slug:", currentSlug);
 
-      const currentIndex = projects.findIndex(project => project.slug === currentSlug);
+  const currentIndex = projects.findIndex(project => project.slug === currentSlug);
 
-      if (currentIndex !== -1) {
-        console.log("Current project index:", currentIndex);
+  if (currentIndex !== -1) {
+    console.log("Current project index:", currentIndex);
 
-        // Determine the previous and next project indices
-        const prevIndex = (currentIndex === 0) ? projects.length - 1 : currentIndex - 1;
-        const nextIndex = (currentIndex === projects.length - 1) ? 0 : currentIndex + 1;
+    // Determine the previous and next project indices
+    const prevIndex = (currentIndex === 0) ? projects.length - 1 : currentIndex - 1;
+    const nextIndex = (currentIndex === projects.length - 1) ? 0 : currentIndex + 1;
 
-        // Get the previous and next projects
-        const prevProject = projects[prevIndex];
-        const nextProject = projects[nextIndex];
+    // Get the previous and next projects
+    const prevProject = projects[prevIndex];
+    const nextProject = projects[nextIndex];
 
-        // Update the Prev button
-        const prevButton = document.querySelector('[r-prevnext-prev-btn="1"]');
-        prevButton.href = `/project/${prevProject.slug}`;
-        document.getElementById('prev-text').textContent = prevProject.title;
+    // Update the Prev button
+    const prevButton = document.querySelector('[r-prevnext-prev-btn="1"]');
+    prevButton.href = `/cms/project/${prevProject.slug}`;
+    document.querySelector('[r-prevnext-prev-text="1"]').textContent = prevProject.title;
 
-        // Update the Next button
-        const nextButton = document.querySelector('[r-prevnext-next-btn="1"]');
-        nextButton.href = `/project/${nextProject.slug}`;
-        document.getElementById('next-text').textContent = nextProject.title;
+    // Update the Next button
+    const nextButton = document.querySelector('[r-prevnext-next-btn="1"]');
+    nextButton.href = `/cms/project/${nextProject.slug}`;
+    document.querySelector('[r-prevnext-next-text="1"]').textContent = nextProject.title;
 
-        console.log("Prev:", prevProject, "Next:", nextProject);
-      } else {
-        console.error("Current project not found in project list.");
-      }
-    });
+    console.log("Prev:", prevProject, "Next:", nextProject);
+  } else {
+    console.error("Current project not found in project list.");
+  }
+});
   </script>
 
 </body></html>
