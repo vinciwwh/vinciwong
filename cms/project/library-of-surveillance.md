@@ -7,7 +7,7 @@ f_photo:
 updated-on: '2024-11-18T04:31:39.482Z'
 created-on: '2022-11-29T11:47:42.755Z'
 published-on: '2024-11-18T04:32:11.146Z'
-f_link: NA
+f_link: 
 f_hex-code: '#111f1b'
 f_multi-images:
   - url: /assets/external/672cd82aedf1ff3a83e469f6_interior20jhpg.jpg
