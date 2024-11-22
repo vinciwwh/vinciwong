@@ -166,7 +166,7 @@
    document.addEventListener('DOMContentLoaded', () => {
   console.log("Script loaded successfully!");
 
-  // Define project data with slugs and titles
+
   const projects = [
     { title: "Reminsicene", slug: "reminsicene" },
     { title: "Library of Surveillance", slug: "library-of-surveillance" },
@@ -177,7 +177,7 @@
     { title: "Mirror Dimension", slug: "mirror-dimension" },
   ];
 
-  // Extract current slug from the URL
+
   const currentSlug = window.location.pathname.split("/").filter(Boolean).pop();
   console.log("Current slug:", currentSlug);
 
@@ -186,20 +186,20 @@
   if (currentIndex !== -1) {
     console.log("Current project index:", currentIndex);
 
-    // Determine the previous and next project indices
+
     const prevIndex = (currentIndex === 0) ? projects.length - 1 : currentIndex - 1;
     const nextIndex = (currentIndex === projects.length - 1) ? 0 : currentIndex + 1;
 
-    // Get the previous and next projects
+   
     const prevProject = projects[prevIndex];
     const nextProject = projects[nextIndex];
 
-    // Update the Prev button
+ 
     const prevButton = document.querySelector('[r-prevnext-prev-btn="1"]');
     prevButton.href = `/cms/project/${prevProject.slug}`;
     document.querySelector('[r-prevnext-prev-text="1"]').textContent = prevProject.title;
 
-    // Update the Next button
+
     const nextButton = document.querySelector('[r-prevnext-next-btn="1"]');
     nextButton.href = `/cms/project/${nextProject.slug}`;
     document.querySelector('[r-prevnext-next-text="1"]').textContent = nextProject.title;
