@@ -196,12 +196,12 @@
 
         // Update the Prev button
         const prevButton = document.querySelector('[r-prevnext-prev-btn="1"]');
-        prevButton.href = `/cms/project/${prevProject.slug}`;
+        prevButton.href = `/project/${prevProject.slug}`;
         document.getElementById('prev-text').textContent = prevProject.title;
 
         // Update the Next button
         const nextButton = document.querySelector('[r-prevnext-next-btn="1"]');
-        nextButton.href = `/cms/project/${nextProject.slug}`;
+        nextButton.href = `/project/${nextProject.slug}`;
         document.getElementById('next-text').textContent = nextProject.title;
 
         console.log("Prev:", prevProject, "Next:", nextProject);
